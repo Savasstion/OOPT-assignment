@@ -24,7 +24,7 @@ public class Main {
                 userInputIsValid = true;
             } else {
                 userInputIsValid = false;
-                //clear screen fuction, (need help in this, cant find the answers for this)
+                //clear screen fuction, (need help in this to clear terminal)
                
             }
         } while (userInputIsValid == false);
