@@ -19,7 +19,7 @@ public class FoodMenu extends Menu {
     }
 
     @Override
-    public boolean validate(Object obj) {
+    public boolean validateOption(Object obj) {
         String userEntered = (String)obj;
         
         if (userEntered.length() > 1) {

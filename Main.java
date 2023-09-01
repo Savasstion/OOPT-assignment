@@ -19,7 +19,7 @@ public class Main {
             menu.displayOptions(userInputIsValid);
 
             String userInput = sc.nextLine();
-            if (menu.validate(userInput)) {
+            if (menu.validateOption(userInput)) {
                 menu.doMenuTask(userInput.charAt(0));
                 userInputIsValid = true;
             } else {
