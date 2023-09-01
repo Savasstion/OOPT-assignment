@@ -52,7 +52,7 @@ public abstract class Menu {
     }
 
     //if need to convert String to other datatypes for validation, use something like Double.parseDouble(string) or Integer.parseInt(string)
-    public abstract boolean validate(String userEntered);
+    public abstract boolean validate(Object obj);
 
     public abstract void doMenuTask(char userInput);
 
