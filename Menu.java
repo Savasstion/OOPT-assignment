@@ -2,7 +2,9 @@ import java.util.ArrayList;
 
 public abstract class Menu {
 
+    //cache input just in case when needed
     private char userInput;
+    private boolean exit = false;
     private int optionsCount;
     private ArrayList<String> options = new ArrayList<>();
 
@@ -51,9 +53,20 @@ public abstract class Menu {
         }
     }
 
-    //if need to convert String to other datatypes for validation, use something like Double.parseDouble(string) or Integer.parseInt(string)
-    public abstract boolean validateOption(Object obj);
+    public boolean isExit() {
+        return exit;
+    }
 
-    public abstract void doMenuTask(char userInput);
+    public void setExit(boolean exit) {
+        this.exit = exit;
+    }
+
+    
+    
+    //if need to convert String to other datatypes for validation, use something like Double.parseDouble(string) or Integer.parseInt(string)
+    public abstract boolean validateOption(Object obj, int validationStage);
+    
+ 
+    public abstract void doMenuTask(Object input);
 
 }

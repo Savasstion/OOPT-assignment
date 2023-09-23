@@ -11,15 +11,19 @@ import java.util.ArrayList;
 public class FoodMenu extends Menu {
 
     public FoodMenu() {
-        super();
-    }
-
-    public FoodMenu(ArrayList<String> options) {
-        super(options);
+        super(new ArrayList() {
+            {
+                add("Destroy the world");
+                add("Consume souls");
+                add("Play bingo");
+                add("Exit");
+            }
+        });
     }
 
     @Override
-    public boolean validateOption(Object obj) {
+    public boolean validateOption(Object obj, int validationStage) {
+        //no need optionStage cuz only one type of validation
         String userEntered = (String)obj;
         
         if (userEntered.length() > 1) {
@@ -29,7 +33,9 @@ public class FoodMenu extends Menu {
         setUserInput(userEntered.charAt(0));
 
         if (Character.isDigit(getUserInput())) {
-            //convert char to ASCII decimal num then compare
+            //convert char to ASCII int values then by minusing 48 to get raw value (refer ASCII table)
+            //To a teammate who wants to implement this but still dont understand this,
+            //you can just Character.getNumericValue('1'), this example will result to returning int 1
             return ((int) getUserInput() - 48 <= getOptionsCount() && (int) getUserInput() - 48 > 0);
         } else {
             return false;
@@ -38,8 +44,9 @@ public class FoodMenu extends Menu {
     }
 
     @Override
-    public void doMenuTask(char userInput) {
-        switch (userInput) {
+    public void doMenuTask(Object userInput) {
+
+        switch ((Character)userInput) {
             case '1':
                 System.out.println("Destroyed the world");
                 break;
@@ -48,6 +55,9 @@ public class FoodMenu extends Menu {
                 break;
             case '3':
                 System.out.println("Played bingo");
+                break;
+            case '4':
+                setExit(true);
                 break;
         }
     }

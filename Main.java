@@ -6,20 +6,15 @@ public class Main {
     public static void main(String[] args)  {
         boolean userInputIsValid = true;
 
-        Menu menu = new FoodMenu(new ArrayList() {
-            {
-                add("Destroy the world");
-                add("Consume souls");
-                add("Play bingo");
-            }
-        });
+        FoodMenu menu = new FoodMenu();
         Scanner sc = new Scanner(System.in);
 
         do {
             menu.displayOptions(userInputIsValid);
 
             String userInput = sc.nextLine();
-            if (menu.validateOption(userInput)) {
+            //only 1 options needed to be validated so optionSatge = 1 in function parameter
+            if (menu.validateOption(userInput,1)) {
                 menu.doMenuTask(userInput.charAt(0));
                 userInputIsValid = true;
             } else {
@@ -27,7 +22,7 @@ public class Main {
                 //clear screen fuction, (need help in this to clear terminal)
                
             }
-        } while (userInputIsValid == false);
+        } while (!menu.isExit());
     }
     
    
