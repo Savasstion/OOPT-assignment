@@ -17,7 +17,7 @@ public class SeatAvailMenu extends Menu {
     private int userHallInput = 0;
 
     public SeatAvailMenu() {
-        super(new ArrayList() {
+        super(new ArrayList<>() {
             {
                 add("Show seat availability");
                 add("Book seat");
@@ -32,7 +32,7 @@ public class SeatAvailMenu extends Menu {
 
     //use if got existing callArr
     public SeatAvailMenu(CinemaHall[] hallArr) {
-        super(new ArrayList() {
+        super(new ArrayList<>() {
             {
                 add("Show seat availability");
                 add("Book seat");

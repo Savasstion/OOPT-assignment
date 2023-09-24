@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class FoodMenu extends Menu {
 
     public FoodMenu() {
-        super(new ArrayList() {
+        super(new ArrayList<>() {
             {
                 add("Destroy the world");
                 add("Consume souls");
