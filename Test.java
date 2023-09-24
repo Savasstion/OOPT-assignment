@@ -1,19 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 
-/**
- *
- * @author savas
- */
+import java.util.Scanner;
+
+
 public class Test {
-    public static void main(String[] args){
-    SeatAvailMenu menu = new SeatAvailMenu();
-    String userSeatInput = "1A01";
-    
-    
-        System.out.println((Integer.parseInt(userSeatInput.substring(2, 4))));
-        //System.out.println(Integer.toString(1) + Character.toString('A') + Character.toString('0') + Integer.toString(1));
+    public static void main(String[] args)  {
+        boolean userInputIsValid = true;
+
+        MemberMenu menu = new MemberMenu();
+        Scanner sc = new Scanner(System.in);
+        System.out.println(menu.getMemberArr().size());
+        
+        do {
+            menu.displayOptions(userInputIsValid);
+
+            String userInput = sc.nextLine();
+            //only 1 options needed to be validated so optionSatge = 1 in function parameter
+            if (menu.validateOption(userInput,1)) {
+                menu.doMenuTask(userInput.charAt(0));
+                userInputIsValid = true;
+            } else {
+                userInputIsValid = false;
+                //clear screen fuction, (need help in this to clear terminal)
+               
+            }
+        } while (!menu.isExit());
     }
 }
