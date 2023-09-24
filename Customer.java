@@ -22,6 +22,7 @@ public class Customer {
         this.password = password;
         customerCount += 1;
         this.custID = customerCount;
+
     }
 
     public int getAge() {
@@ -35,6 +36,7 @@ public class Customer {
     public boolean isMember() {
         return isMember;
     }
+
 
     public void setIsMember(boolean isMember) {
         this.isMember = isMember;
@@ -65,4 +67,10 @@ public class Customer {
     }
     
  
+
+    
+
+
 }
+
+
