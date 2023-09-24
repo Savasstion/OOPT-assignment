@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class MemberMenu extends Menu {
 
     private ArrayList<Customer> memberArr = new ArrayList<>();
+    private Customer loggedInCust;
 
     public MemberMenu() {
         super(new ArrayList() {
@@ -32,6 +33,15 @@ public class MemberMenu extends Menu {
         this.memberArr = memberArr;
     }
 
+    public Customer getLoggedInCust() {
+        return loggedInCust;
+    }
+
+    public void setLoggedInCust(Customer loggedInCust) {
+        this.loggedInCust = loggedInCust;
+    }
+
+   
     @Override
     public void doMenuTask(Object input) {
         char menuInput = (Character) input;
@@ -85,6 +95,7 @@ public class MemberMenu extends Menu {
                         if ((memberArr.get(i).getCustomerName().equals(cust.getCustomerName())) && (memberArr.get(i).getPassword().equals(cust.getPassword()))) {
                             //System.out.println(memberArr.get(i).getCustomerName());
                             loginSuccessful = true;
+                            setLoggedInCust(memberArr.get(i));
                             break;
 
                         }
@@ -92,6 +103,7 @@ public class MemberMenu extends Menu {
 
                     if (loginSuccessful) {
                         System.out.println("Log in successful");
+                        
 
                     } else {
                         System.out.println("Invalid username or password");

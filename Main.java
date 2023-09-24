@@ -21,7 +21,7 @@ public class Main {
             menu.displayOptions(userInputIsValid);
 
             String userInput = sc.nextLine();
-            if (menu.validateOption(userInput)) {
+            if (menu.validateOption(userInput,1)) {
                 menu.doMenuTask(userInput.charAt(0));
                 userInputIsValid = true;
             } else {
