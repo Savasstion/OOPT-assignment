@@ -11,7 +11,6 @@ import java.util.Scanner;
  * @author savas
  */
 public class ticketMenu extends Menu {
-ticket Ticket;
 
     public ticketMenu() {
         super(new ArrayList<>() {
@@ -57,15 +56,18 @@ ticket Ticket;
                 Movie.listMovies(Movie.getMovies());
                 break;
             case '2':
-                ticketSales();
+                ticket.purchaseTicket();
                 break;
             case '3':
-                Ticket.cancelTicket();
+                ticket.cancelTicket();
                 break;
             case '4':
                 setExit(true);
                 break;
         }
     }
+
+
+
 
 }

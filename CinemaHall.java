@@ -1,7 +1,8 @@
 
 public class CinemaHall {
 
-    private static int totalHalls = 10;
+    private static CinemaHall[] halls = new CinemaHall[10];
+    private static int totalCinemaHalls = 10;
     private static int totalSeatRows = 10;
     private static int totalSeatCols = 10;
     private int hallNum;
@@ -9,14 +10,24 @@ public class CinemaHall {
     private Movie movieAired;
 
     public CinemaHall() {
-        
     }
-
+        // Getter for totalCinemaHalls
+        public static int getCinemaHalls() {
+            return totalCinemaHalls;
+        }
+    
+        // Setter for totalCinemaHalls
+        public static void setCinemaHalls(int totalCinemaHalls) {
+            CinemaHall.totalCinemaHalls = totalCinemaHalls;
+        }
     //used when seatArr is stored in database or etc and need to reconstruct the cinemaHall again
     public CinemaHall(int hallNum, Movie movieAired, Seat[][] seatArr) {
         this.hallNum = hallNum;
         this.movieAired = movieAired;
         this.seatArr = seatArr;
+        if (hallNum >= 1 && hallNum <= 10) {
+            halls[hallNum - 1] = this; // -1 to convert hallNum to an array index
+        }
     }
 
     public CinemaHall(int hallNum, Movie movieAired) {
@@ -69,20 +80,41 @@ public class CinemaHall {
         this.movieAired = movieAired;
     }
 
-    public static int getTotalHalls() {
-        return totalHalls;
-    }
-
-    public static void setTotalHalls(int totalHalls) {
-        CinemaHall.totalHalls = totalHalls;
-    }
-
     public Seat[][] getSeatArr() {
         return seatArr;
     }
 
     public void setSeatArr(Seat[][] seatArr) {
         this.seatArr = seatArr;
+    }
+
+    public Seat getSeatBySeatID(String seatID) {
+        for (int i = 0; i < totalSeatRows; i++) {
+            for (int j = 0; j < totalSeatCols; j++) {
+                if (seatArr[i][j].getSeatID().equals(seatID)) {
+                    return seatArr[i][j];
+                }
+            }
+        }
+        return null; 
+    }
+
+    public static CinemaHall getCinemaHall(int hallNum) {
+        if (hallNum >= 1 && hallNum <= 10) {
+            return halls[hallNum - 1]; // -1 to convert hallNum to an array index
+        } else {
+            return null; // Invalid hallNum
+        }
+    }
+
+    // Method to print the seat plan
+    public void printSeatPlan() {
+        for (int i = 0; i < totalSeatRows; i++) {
+            for (int j = 0; j < totalSeatCols; j++) {
+                System.out.print(seatArr[i][j].displayAvail() + " ");
+            }
+            System.out.println();
+        }
     }
 
 }

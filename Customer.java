@@ -66,10 +66,6 @@ public class Customer {
         this.custID = custID;
     }
     
- 
-
-    
-
 
 }
 

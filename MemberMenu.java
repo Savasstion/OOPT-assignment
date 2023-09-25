@@ -120,5 +120,6 @@ public class MemberMenu extends Menu {
                 System.out.println("Invalid parameter in doMenuTask()");
 
         }
+        s.close();
     }
 }

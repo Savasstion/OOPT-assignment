@@ -70,7 +70,7 @@ public class SeatAvailMenu extends Menu {
         if (userInput == 1) {
             //input hallNum
             userHallInput = (Integer) obj;
-            if (userHallInput > 0 && userHallInput <= CinemaHall.getTotalHalls()) {
+            if (userHallInput > 0 && userHallInput <= CinemaHall.getCinemaHalls()) {
                 return true;
             } else {
                 return false;
