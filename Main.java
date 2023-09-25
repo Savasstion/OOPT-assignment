@@ -14,15 +14,24 @@ public class Main {
         " \\_____|_|_| |_|\\___|_| |_| |_|\\__,_|\n";
         boolean userInputIsValid = true;
         String command = "cls";
+<<<<<<< HEAD
 
+=======
+        FoodMenu menu = new FoodMenu();
+>>>>>>> 958366ee379db849d94a4966a65294dcdc777a03
         Scanner sc = new Scanner(System.in);
 
         do {
             Menu.displayOptions(userInputIsValid);
 
             String userInput = sc.nextLine();
+<<<<<<< HEAD
             if (Menu.validateOption(userInput)) {
                 Menu.doMenuTask(userInput.charAt(0));
+=======
+            if (menu.validateOption(userInput,1)) {
+                menu.doMenuTask(userInput.charAt(0));
+>>>>>>> 958366ee379db849d94a4966a65294dcdc777a03
                 userInputIsValid = true;
             } else {
                 userInputIsValid = false;
