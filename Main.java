@@ -13,32 +13,22 @@ public class Main {
         "| |____| | | | |  __/ | | | | | (_| |\n" +
         " \\_____|_|_| |_|\\___|_| |_| |_|\\__,_|\n";
         boolean userInputIsValid = true;
-        String command = "cls";
-<<<<<<< HEAD
-
-=======
         FoodMenu menu = new FoodMenu();
->>>>>>> 958366ee379db849d94a4966a65294dcdc777a03
         Scanner sc = new Scanner(System.in);
 
         do {
-            Menu.displayOptions(userInputIsValid);
+            menu.displayOptions(userInputIsValid);
 
             String userInput = sc.nextLine();
-<<<<<<< HEAD
-            if (Menu.validateOption(userInput)) {
-                Menu.doMenuTask(userInput.charAt(0));
-=======
             if (menu.validateOption(userInput,1)) {
                 menu.doMenuTask(userInput.charAt(0));
->>>>>>> 958366ee379db849d94a4966a65294dcdc777a03
                 userInputIsValid = true;
             } else {
                 userInputIsValid = false;
-                //clear screen fuction, (need help in this to clear terminal)
+                //try clear screen fuction
                 try {
                     // Execute the command to clear the terminal
-                    Process process = new ProcessBuilder(command).inheritIO().start();
+                    Process process = new ProcessBuilder("cls").inheritIO().start();
                     process.waitFor();
                 } catch (IOException | InterruptedException e) {
                     e.printStackTrace();
@@ -48,11 +38,9 @@ public class Main {
 
 
     
+       
 
-        ArrayList<Movie> movieNames = new ArrayList<Movie>();
-        ArrayList<Customer> customers = new ArrayList<Customer>();
-
-
+    
 
         sc.close();
     }

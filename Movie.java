@@ -1,10 +1,11 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Movie {
     private int movieID;
     private String movieName;
     private int ageRating;
-
+    private static List<Movie> movies = new ArrayList<>();
     
     public Movie() {
     }
@@ -24,10 +25,14 @@ public class Movie {
         }
     }
 
+    public static List<Movie> getMovies() {
+        return movies;
+    }
+
     public static void addMovie(List<Movie> movies, int movieID, String movieName, int ageRating) {
         /* To use this, first define an arrayList List<Movie> movieList = new ArrayList<>();
          * and then addMovie(movieList, movieID, movieName, ageRating) 
-         * I want this arrayList so that I can list them later in display :)
+         * I want this arrayList so that I can list them later in display :) (Leng Zjet added)
          */
         movies.add(new Movie(movieID, movieName, ageRating));
     }

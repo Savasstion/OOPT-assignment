@@ -8,14 +8,14 @@ public class MemberMenu extends Menu {
     private Customer loggedInCust;
 
     public MemberMenu() {
-        super(new ArrayList() {
+        super(new ArrayList<>() {
             {
                 add("Sign Up");
                 add("Log In");
                 add("Exit");
             }
         });
-        this.memberArr = (new ArrayList() {
+        this.memberArr = (new ArrayList<>() {
             {
                 add(new Customer(19, false, "Bob", "696969"));
                 add(new Customer(69, false, "Beep", "111"));

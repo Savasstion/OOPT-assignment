@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -10,22 +11,12 @@ import java.util.List;
  * @author savas
  */
 public class ticketMenu extends Menu {
-Movie movie = new Movie();
-
-    public static void listMovies(List<Movie> movies) {
-        //Option 1
-        System.out.println("Movies List:");
-        for (Movie movie : movies) {
-            System.out.println("Movie Name: " + movie.getMovieName());
-            System.out.println("Age Rating: " + movie.getAgeRating());
-            System.out.println("---------------------------------");
-        }
-    }
+ticket Ticket;
 
     public ticketMenu() {
         super(new ArrayList<>() {
             {
-                add("Please Enter 1 to Display movieNames");
+                add("Please Enter 1 to Display Movie Names");
                 add("Please Enter 2 to Buy Tickets");
                 add("Please Enter 3 to Cancel Tickets");
                 add("Please Enter 4 to Exit\n");
@@ -55,18 +46,21 @@ Movie movie = new Movie();
 
     }
 
+
+
+
     @Override
     public void doMenuTask(Object userInput) {
 
         switch ((Character)userInput) {
             case '1':
-                listMovie(Movie);
+                Movie.listMovies(Movie.getMovies());
                 break;
             case '2':
-                System.out.println("Consumed souls");
+                ticketSales();
                 break;
             case '3':
-                System.out.println("Played bingo");
+                Ticket.cancelTicket();
                 break;
             case '4':
                 setExit(true);
