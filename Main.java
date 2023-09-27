@@ -13,6 +13,8 @@ public class Main {
         boolean userInputIsValid = true;
         ticketMenu menu2 = new ticketMenu();
         SeatAvailMenu menu3 = new SeatAvailMenu();
+        MemberMenu menu = new MemberMenu();
+        
         Scanner sc = new Scanner(System.in);
         int menuChoice = 0;
         do {
@@ -21,9 +23,45 @@ public class Main {
             System.out.println("Enter Your Choice:");
             if (sc.hasNextInt()) {
                 menuChoice = sc.nextInt();
-                sc.nextLine(); // Consume the newline character
+                sc.nextLine(); 
                     if (menuChoice == 1) {
-                    do {
+                    do { //Staff login by Ethan, ID and password assumed to be only 1.
+                    Staff staff = new Staff("admin", "password" );
+                    boolean loggedIn = false;
+                   
+                  while(!loggedIn){
+                    System.out.println("");
+                    System.out.println("+===================================+");
+                    System.out.println("|            Staff Login            |");
+                    System.out.println("+===================================+");
+                    System.out.print("Enter staff ID :");
+                    String inloginid = sc.nextLine();
+                    System.out.print("Enter password :");
+                    String inpsw = sc.nextLine();
+                    
+                    if(staff.login(inloginid, inpsw)){
+                        System.out.println("");
+                        System.out.println("LOGIN SUCCESSFUL!!");
+                        System.out.println("");
+                        staff.staffMenu();
+                        loggedIn = true;
+                    }else{
+                        System.out.println("");
+                        System.out.println("LOGIN UNSUCCESSFUL, Staff ID or Password is INCORRECT!!");
+                    }
+                    userInputIsValid = true;
+            }
+            
+            }while (userInputIsValid == false);}while (userInputIsValid == false);}
+                 else if (menuChoice == 2) {
+                                        do {
+            System.out.println(logo);
+
+        menu3.getHallArr()[0].getSeatArr()[0][0].setSeatAssigned(true);
+        // Basically I make everything run here, Customer -> book seat -> ticket checkout/cancel
+        // Consumable, Ticketmenu OKKKK LAST RUN PLEASE
+        // I think it's best to put Customer Register here first, and then let them book a seat
+        do {
             System.out.println(logo);
             menu2.displayOptions(userInputIsValid);
             String userInput = sc.nextLine();
@@ -33,39 +71,33 @@ public class Main {
             } else {
                 userInputIsValid = false;
                 clearScreen();
-            }}while (userInputIsValid == false);}
-                 else if (menuChoice == 2) {
-                                        do {
-            System.out.println(logo);
+            }}while (userInputIsValid == false);
 
-        boolean exit = false;
-
-        menu3.getHallArr()[0].getSeatArr()[0][0].setSeatAssigned(true);
-        
+                    userInputIsValid = true;
         do {
             menu3.displayOptions(userInputIsValid);
 
-            menu3.setUserInput(sc.nextLine().charAt(0));
+            menu.setUserInput(sc.nextLine().charAt(0));
             //make sure do userInput 1 then 2 first
             //if userInput == 1, obj will be hallNum
             //if userInput == 2, obj will be seatID string
             
-            if (menu3.getUserInput() == '1') {
+            if (menu.getUserInput() == '1') {
                 System.out.println("Which hall would you like to access?");
                 int hall = sc.nextInt();
-                if (menu3.validateOption(hall, 1)) {
-                    menu3.doMenuTask(hall);
+                if (menu.validateOption(hall, 1)) {
+                    menu.doMenuTask(hall);
                     userInputIsValid = true;
                 } else {
                     System.out.println("Failed validation");
                     userInputIsValid = false;
                     clearScreen();
                 }
-            } else if (menu3.getUserInput() == '2') {
+            } else if (menu.getUserInput() == '2') {
                 System.out.println("Which seat will you buy? (format: hallNum + row + col)");
                 String halls = sc.next();
-                if (menu3.validateOption(halls, 2)) {
-                    menu3.doMenuTask(halls);
+                if (menu.validateOption(halls, 2)) {
+                    menu.doMenuTask(halls);
                     userInputIsValid = true;
                 } else {
                     System.out.println("Failed validation");
@@ -84,15 +116,17 @@ public class Main {
         } while (!menu3.isExit());
         } while (userInputIsValid == false);
                 }
-            } else {
+            else {
                 System.out.println("Invalid input. Please enter a number between 1 and 2");
-                sc.nextLine(); // Consume the invalid input
+                sc.nextLine(); 
             }
+            //Redirect to ticket menu
+
         } while (menuChoice != 1 && menuChoice != 2 && menuChoice != 3);
 
         sc.close();
     }
-    
+
     public static void clearScreen() {
         try {
             // Execute the command to clear the terminal
