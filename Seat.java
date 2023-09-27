@@ -30,7 +30,7 @@ public class Seat {
         //format is "hallNum + row + col".
         //"1A01" means hall 1,A means row 1, 01 mean column 1
         row = Character.toUpperCase(row);
-        if (row >= 'A' && row < ('A' + (CinemaHall.getTotalHalls() - 1))) {
+        if (row >= 'A' && row < ('A' + (CinemaHall.getCinemaHalls() - 1))) {
             if (col > 0 && col <= CinemaHall.getTotalSeatCols() && col < 10) {
                 this.seatID = Integer.toString(hallNum) + Character.toString((char)row) + Character.toString('0') + Integer.toString(col);
             } else if (col >= 10 && col <= CinemaHall.getTotalSeatCols()) {
@@ -48,7 +48,7 @@ public class Seat {
         //plus 64 to at least get 'A'
         row += 64;
         char rowChar = (char) row;
-        if (rowChar >= 'A' && rowChar < ('A' + (CinemaHall.getTotalHalls() - 1))) {
+        if (rowChar >= 'A' && rowChar < ('A' + (CinemaHall.getCinemaHalls() - 1))) {
             if (col > 0 && col <= CinemaHall.getTotalSeatCols()) {
                 this.seatID = Integer.toString(hallNum) + row + '0' + Integer.toString(hallNum);
             } else if (col >= 10 && col <= CinemaHall.getTotalSeatCols()) {

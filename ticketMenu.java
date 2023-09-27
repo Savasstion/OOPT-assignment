@@ -15,10 +15,10 @@ public class ticketMenu extends Menu {
     public ticketMenu() {
         super(new ArrayList<>() {
             {
-                add("Please Enter 1 to Display Movie Names");
-                add("Please Enter 2 to Buy Tickets");
-                add("Please Enter 3 to Cancel Tickets");
-                add("Please Enter 4 to Exit\n");
+                add("Display Movies Shown");
+                add("Buy Tickets");
+                add("Cancel Tickets");
+                add("Exit");
             }
         });
     }

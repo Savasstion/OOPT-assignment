@@ -69,7 +69,7 @@ public class SeatAvailMenu extends Menu {
     public boolean validateOption(Object obj, int userInput) {
         if (userInput == 1) {
             //input hallNum
-            userHallInput = (Integer) obj;
+            userHallInput = (int) obj;
             if (userHallInput > 0 && userHallInput <= CinemaHall.getCinemaHalls()) {
                 return true;
             } else {

@@ -54,11 +54,12 @@ public class ticket {
             
             switch (choice) {
                 case 1:
-                     System.out.println("Available Halls:");
-        // Display available halls logic
+
         
         System.out.print("Enter the Hall number you want to purchase a ticket for: ");
         int hallNum = scanner.nextInt();
+        System.out.println("Available Halls:");
+        // Display available halls logic
         
         // Display available seats logic (loop through the cinema hall)
         CinemaHall hall = CinemaHall.getCinemaHall(hallNum);
@@ -99,7 +100,7 @@ public class ticket {
             Customer customer = new Customer(customerAge, isMember, customerName, password);
             
             // Calculate ticket price (you may need to add appropriate logic)
-            double ticketPrice = calculateTotalTicketPrice(hall, selectedSeats);
+            double ticketPrice = calculateTotalTicketPrice(selectedSeats);
             
             // Create a new ticket
             ticket newTicket = new ticket(selectedSeats, selectedSeats.size(), ticketPrice, customer);
@@ -164,21 +165,18 @@ public class ticket {
         scanner.close();
     }
 
-    public static double calculateTotalTicketPrice(CinemaHall hall, List<String> selectedSeats) {
-        // Implement your ticket price calculation logic here
-        double totalTicketPrice = 0.0;
-        
-        // You should calculate the price for each seat and add it to totalTicketPrice
-        
-        return totalTicketPrice;
+    public static double calculateTotalTicketPrice(FoodItem food, List<String> selectedSeats, double seatPrice) {
+        double foodprice = food.getPrice();
+        double totalSeatPrice = (selectedSeats.size() * seatPrice) + foodprice;
+        return totalSeatPrice;
     }
 
     @Override
     public String toString() {
         return "Ticket ID: " + String.format("%04d", ticketID) +
-               "\nSeat ID: " + seatIDs +
+               "\nSeat ID(s): " + seatIDs +
                "\nSeats Booked: " + seatBookedNum +
-               "\nTicket Price: $" + ticketPrice;
+               "\nTicket Price: $" + totalSeatPrice;
     }
 
 }
