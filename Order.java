@@ -8,7 +8,6 @@ public class Order {
         this.foodItem = foodItem;
         this.size = size;
         this.quantity = quantity;
-        
     }
 
     public FoodItem getFoodItem() {

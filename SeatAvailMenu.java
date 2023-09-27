@@ -26,7 +26,7 @@ public class SeatAvailMenu extends Menu {
         });
         //default movie is Barbenheimer
         for (int i = 0; i < totalCinemaHalls; i++) {
-            this.hallArr[i] = new CinemaHall(i + 1, new Movie(1, "Barbenheimer", 18));
+            this.hallArr[i] = new CinemaHall(i + 1, new Movie("Barbenheimer", 18));
         }
     }
 

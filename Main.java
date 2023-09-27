@@ -16,9 +16,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int menuChoice = 0;
         do {
-            System.out.println("1) Buy Tickets");
+            System.out.println("1) Staff login");
             System.out.println("2) Check Seat Availability");
-
             System.out.println("Enter Your Choice:");
             if (sc.hasNextInt()) {
                 menuChoice = sc.nextInt();
@@ -38,16 +37,51 @@ public class Main {
                  else if (menuChoice == 2) {
                                         do {
             System.out.println(logo);
+
+        boolean exit = false;
+
+        menu3.getHallArr()[0].getSeatArr()[0][0].setSeatAssigned(true);
+        
+        do {
             menu3.displayOptions(userInputIsValid);
-            String userInput = sc.nextLine();
-            if (menu3.validateOption(userInput,1)) {
-                menu3.doMenuTask(userInput.charAt(0));
+
+            menu3.setUserInput(sc.nextLine().charAt(0));
+            //make sure do userInput 1 then 2 first
+            //if userInput == 1, obj will be hallNum
+            //if userInput == 2, obj will be seatID string
+            
+            if (menu3.getUserInput() == '1') {
+                System.out.println("Which hall would you like to access?");
+                int hall = sc.nextInt();
+                if (menu3.validateOption(hall, 1)) {
+                    menu3.doMenuTask(hall);
+                    userInputIsValid = true;
+                } else {
+                    System.out.println("Failed validation");
+                    userInputIsValid = false;
+                    clearScreen();
+                }
+            } else if (menu3.getUserInput() == '2') {
+                System.out.println("Which seat will you buy? (format: hallNum + row + col)");
+                String halls = sc.next();
+                if (menu3.validateOption(halls, 2)) {
+                    menu3.doMenuTask(halls);
+                    userInputIsValid = true;
+                } else {
+                    System.out.println("Failed validation");
+                    userInputIsValid = false;
+                    clearScreen();
+                }
+            }
+             else if (menu3.getUserInput() == '3') {
                 userInputIsValid = true;
+                menu3.setExit(true);
+                
+
             } else {
                 userInputIsValid = false;
-                //try clear screen fuction
-                clearScreen();
             }
+        } while (!menu3.isExit());
         } while (userInputIsValid == false);
                 }
             } else {
@@ -55,7 +89,6 @@ public class Main {
                 sc.nextLine(); // Consume the invalid input
             }
         } while (menuChoice != 1 && menuChoice != 2 && menuChoice != 3);
-
 
         sc.close();
     }

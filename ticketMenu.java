@@ -15,7 +15,6 @@ public class ticketMenu extends Menu {
     public ticketMenu() {
         super(new ArrayList<>() {
             {
-                add("Display Movies Shown");
                 add("Buy Tickets");
                 add("Cancel Tickets");
                 add("Exit");
@@ -53,15 +52,12 @@ public class ticketMenu extends Menu {
 
         switch ((Character)userInput) {
             case '1':
-                Movie.listMovies(Movie.getMovies());
-                break;
-            case '2':
                 ticket.purchaseTicket();
                 break;
-            case '3':
+            case '2':
                 ticket.cancelTicket();
                 break;
-            case '4':
+            case '3':
                 setExit(true);
                 break;
         }
