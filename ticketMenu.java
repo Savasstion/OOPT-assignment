@@ -15,8 +15,9 @@ public class ticketMenu extends Menu {
     public ticketMenu() {
         super(new ArrayList<>() {
             {
-                add("Buy Tickets");
+                add("Buy Food onto Tickets");
                 add("Cancel Tickets");
+                add("Display Current Ticket");
                 add("Exit");
             }
         });
@@ -52,12 +53,15 @@ public class ticketMenu extends Menu {
 
         switch ((Character)userInput) {
             case '1':
-                ticket.purchaseTicket();
+                Consumable.main();
                 break;
             case '2':
                 ticket.cancelTicket();
                 break;
-            case '3':
+                        case '3':
+                ticket.displayTicket();
+                break;    
+            case '4':
                 setExit(true);
                 break;
         }

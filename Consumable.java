@@ -4,10 +4,10 @@ import java.util.Scanner;
     
 
 public class Consumable {
-
+        private double foodTotal = 0;
     static Scanner scan = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main() {
         //ArrayList to store food menu
         ArrayList<FoodItem> menu = new ArrayList<>();
         menu.add(new FoodItem("F001", "Popcorn", 5.50));
@@ -170,27 +170,26 @@ public class Consumable {
     public static void viewOrders(ArrayList<Order> orders) {
         System.out.println("~~~~~~~~~~~~~~~Yours Order~~~~~~~~~~~~~~");
         System.out.println("Food Name\t Size\t Price\t Quantity\tTotal");
-        double foodTotal = 0;
         
 //loop for printing and calulate the amount inside of order array 
         for (Order order : orders) {                              
             FoodItem foodItem = order.getFoodItem();              
-            
+            Consumable consumable = new Consumable();
             
             //price multiple size(s = ori price, medium = double price, large = triple price)multiple quantity
             double total = foodItem.getPrice() * order.getSize()*order.getQuantity();        
             System.out.println(foodItem.getFoodName() + "\t\t" + order.getSize()+ "\tRM" + foodItem.getPrice()+"\t\t" +order.getQuantity() + "\tRM" + total); 
-            foodTotal += total;                                  //total is add one by one 
+            consumable.foodTotal += total;                                  //total is add one by one 
         }
         System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
          
-        System.out.println("Total Amount of your order : RM " + foodTotal);
+        System.out.println("Total Amount of your order : RM " + consumable.foodTotal);
         System.out.println();
     }
 
-    
-
-
+    public double getFoodTotal(){
+        return foodTotal;
+    }
 }
 
  

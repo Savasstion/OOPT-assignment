@@ -9,7 +9,6 @@ public class ticket {
     Customer customer;
     private List<String> seatIDs;
     private static List<ticket> tickets = new ArrayList<>();
-    
     public ticket(List<String> seatIDs, int seatBookedNum, double ticketPrice, Customer customer) {
         this.seatIDs = seatIDs;
         this.ticketID = tickets.size() + 1; // Assign a unique ticket ID
@@ -71,7 +70,8 @@ public class ticket {
     }
 
     public static void calculateTotalTicketPrice(int seats) {
-        double foodprice = food.getPrice();
+        Consumable consume;
+        double foodprice = consume.getFoodTotal();
         double totalSeatPrice = (seats * Seat.getSeatPrice()) + foodprice;
         ticketPrice = totalSeatPrice;
     }
@@ -81,7 +81,7 @@ public class ticket {
         return "Ticket ID: " + String.format("%04d", ticketID) +
                "\nSeat ID(s): " + seatIDs +
                "\nSeats Booked: " + seatBookedNum +
-               "\nTicket Price: $" + totalSeatPrice;
+               "\nTicket Price: $" + ticketPrice;
     }
 
 }

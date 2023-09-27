@@ -51,22 +51,24 @@ public class Main {
                     }
                     userInputIsValid = true;
             }
-            
-            }while (userInputIsValid == false);}while (userInputIsValid == false);}
+
+            }while (userInputIsValid == false);}
                  else if (menuChoice == 2) {
                                         do {
             System.out.println(logo);
 
         menu3.getHallArr()[0].getSeatArr()[0][0].setSeatAssigned(true);
         // Basically I make everything run here, Customer -> book seat -> ticket checkout/cancel
-        // Consumable, Ticketmenu OKKKK LAST RUN PLEASE
+        // Consumable OKKKK LAST RUN PLEASE
         // I think it's best to put Customer Register here first, and then let them book a seat
-        do {
+
+do {
+    do{
             System.out.println(logo);
-            menu2.displayOptions(userInputIsValid);
+            menu.displayOptions(userInputIsValid);
             String userInput = sc.nextLine();
-            if (menu2.validateOption(userInput,1)) {
-                menu2.doMenuTask(userInput.charAt(0));
+            if (menu.validateOption(userInput,1)) {
+                menu.doMenuTask(userInput.charAt(0));
                 userInputIsValid = true;
             } else {
                 userInputIsValid = false;
@@ -74,7 +76,8 @@ public class Main {
             }}while (userInputIsValid == false);
 
                     userInputIsValid = true;
-        do {
+
+
             menu3.displayOptions(userInputIsValid);
 
             menu.setUserInput(sc.nextLine().charAt(0));
@@ -120,11 +123,22 @@ public class Main {
                 System.out.println("Invalid input. Please enter a number between 1 and 2");
                 sc.nextLine(); 
             }
-            //Redirect to ticket menu
-
-        } while (menuChoice != 1 && menuChoice != 2 && menuChoice != 3);
+            // redirect to ticket Menu
+                    do {
+            System.out.println(logo);
+            menu2.displayOptions(userInputIsValid);
+            String userInput = sc.nextLine();
+            if (menu2.validateOption(userInput,1)) {
+                menu2.doMenuTask(userInput.charAt(0));
+                userInputIsValid = true;
+            } else {
+                userInputIsValid = false;
+                clearScreen();
+            }}while (userInputIsValid == false);
+        }} while (menuChoice != 1 && menuChoice != 2 && menuChoice != 3);
 
         sc.close();
+    
     }
 
     public static void clearScreen() {

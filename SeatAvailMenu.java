@@ -21,7 +21,7 @@ public class SeatAvailMenu extends Menu {
             {
                 add("Show seat availability");
                 add("Book seat");
-                add("Exit");
+                add("Exit to tickets");
             }
         });
         //default movie is Barbenheimer

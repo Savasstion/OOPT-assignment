@@ -22,11 +22,13 @@ public class CinemaHall {
         }
     //used when seatArr is stored in database or etc and need to reconstruct the cinemaHall again
     public CinemaHall(int hallNum, Movie movieAired, Seat[][] seatArr) {
-        this.hallNum = hallNum;
-        this.movieAired = movieAired;
-        this.seatArr = seatArr;
         if (hallNum >= 1 && hallNum <= 10) {
-            halls[hallNum - 1] = this; // -1 to convert hallNum to an array index
+            this.hallNum = hallNum;
+            this.movieAired = movieAired;
+            this.seatArr = seatArr;
+            CinemaHall.halls[hallNum - 1] = this; // -1 to convert hallNum to an array index
+        } else {
+            System.out.println("Invalid hall number. Hall number must be between 1 and 10.");
         }
     }
 
