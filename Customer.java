@@ -1,18 +1,14 @@
 
-import java.util.Scanner;
-
 
 public class Customer {
     private int age;
     private boolean isMember;
     private String customerName;
     private String password;
-    private int custID;
-    private static int customerCount = 0;
+    private static int custID = 0;
 
     public Customer() {
-        customerCount += 1;
-        this.custID = customerCount;
+        Customer.custID++;
     }
 
     public Customer(int age, boolean isMember, String customerName, String password) {
@@ -20,9 +16,7 @@ public class Customer {
         this.isMember = isMember;
         this.customerName = customerName;
         this.password = password;
-        customerCount += 1;
-        this.custID = customerCount;
-
+        Customer.custID++;
     }
 
     public int getAge() {
@@ -58,14 +52,15 @@ public class Customer {
         this.password = password;
     }
 
-    public int getCustID() {
+    public static int getCustID() {
         return custID;
     }
 
     public void setCustID(int custID) {
-        this.custID = custID;
+        custID = 0;
+        Customer.custID = custID;
     }
-    
+
 
 }
 

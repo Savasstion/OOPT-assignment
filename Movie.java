@@ -42,7 +42,6 @@ public class Movie {
         return movieID;
     }
 
-
     public String getMovieName() {
         return movieName;
     }

@@ -4,6 +4,8 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args)  {
+        // sample data define
+
         final String logo = "  _____ _                            \n" +
         " / ____(_)                           \n" +
         "| |     _ _ __   ___ _ __ ___   __ _ \n" +
@@ -19,7 +21,7 @@ public class Main {
         int menuChoice = 0;
         do {
             System.out.println("1) Staff login");
-            System.out.println("2) Check Seat Availability");
+            System.out.println("2) Main Menu");
             System.out.println("Enter Your Choice:");
             if (sc.hasNextInt()) {
                 menuChoice = sc.nextInt();
@@ -58,9 +60,6 @@ public class Main {
             System.out.println(logo);
 
         menu3.getHallArr()[0].getSeatArr()[0][0].setSeatAssigned(true);
-        // Basically I make everything run here, Customer -> book seat -> ticket checkout/cancel
-        // Consumable OKKKK LAST RUN PLEASE
-        // I think it's best to put Customer Register here first, and then let them book a seat
 
 do {
     do{

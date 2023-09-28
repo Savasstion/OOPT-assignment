@@ -50,7 +50,7 @@ public class MemberMenu extends Menu {
         // menuInput == 2 for log in
         Scanner s = new Scanner(System.in);
 
-        switch (menuInput) {
+         switch (menuInput) {
             case '1':
                 boolean valid = true;
                 do {
@@ -61,7 +61,6 @@ public class MemberMenu extends Menu {
                         if (valid == false) {
                             break;
                         }
-
                     }
                     if (valid == false) {
                         System.out.println("Username has been used, please enter again");
@@ -76,14 +75,16 @@ public class MemberMenu extends Menu {
 
                 cust.setIsMember(true);
 
-                System.out.println("sign up successful");
+                System.out.println("Sign up successful");
 
-                this.memberArr.add(new Customer(cust.getAge(),cust.isMember(),cust.getCustomerName(),cust.getPassword()));
-
+                this.memberArr.add(cust); // Add the Customer object
+                ticket tick = new ticket();
+                tick.setCustomer(Customer.getCustID());
                 break;
+
             case '2':
                 boolean loginSuccessful = false;
-                //System.out.println(memberArr.size());
+
                 do {
                     System.out.println("Enter your username:");
                     cust.setCustomerName(s.nextLine());
@@ -91,34 +92,29 @@ public class MemberMenu extends Menu {
                     cust.setPassword(s.nextLine());
 
                     for (int i = 0; i < getMemberArr().size(); i++) {
-
                         if ((memberArr.get(i).getCustomerName().equals(cust.getCustomerName())) && (memberArr.get(i).getPassword().equals(cust.getPassword()))) {
-                            //System.out.println(memberArr.get(i).getCustomerName());
                             loginSuccessful = true;
                             setLoggedInCust(memberArr.get(i));
                             break;
-
                         }
                     }
 
                     if (loginSuccessful) {
                         System.out.println("Log in successful");
-                        
-
                     } else {
                         System.out.println("Invalid username or password");
-
                     }
 
                 } while (loginSuccessful != true);
 
                 break;
+
             case '3':
                 setExit(true);
                 break;
+
             default:
                 System.out.println("Invalid parameter in doMenuTask()");
-
         }
         s.close();
     }

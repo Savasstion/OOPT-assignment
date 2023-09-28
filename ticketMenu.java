@@ -50,16 +50,25 @@ public class ticketMenu extends Menu {
 
     @Override
     public void doMenuTask(Object userInput) {
+/*
+ *     public ticket(List<String> seatIDs, int seatBookedNum, double ticketPrice, Customer customer) {
+        this.seatIDs = seatIDs;
 
+        this.seatBookedNum = seatIDs.size();
+        this.customer = customer;
+        // Add the ticket to the list of tickets
+        tickets.add(this);
+    }
+ */ ticket tick = new ticket(getOptions(), getUserInput(), getOptionsCount(), Customer.getCustID() );
         switch ((Character)userInput) {
             case '1':
                 Consumable.main();
                 break;
             case '2':
-                ticket.cancelTicket();
+                tick.cancelTicket();
                 break;
                         case '3':
-                ticket.displayTicket();
+                tick.toString();
                 break;    
             case '4':
                 setExit(true);

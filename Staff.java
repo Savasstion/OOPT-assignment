@@ -7,12 +7,10 @@ import java.util.Scanner;
 public class Staff {
     private String loginID;
     private String password;
-    private Scanner scanner;
-
+      Scanner scanner = new Scanner(System.in);
     public Staff(String loginID, String password) {
         this.loginID = loginID;
         this.password = password;
-        scanner = new Scanner(System.in);
     }
 
     public boolean login(String inloginid, String inpsw) {
@@ -26,9 +24,8 @@ public class Staff {
             System.out.println("|            Staff Menu             |");
             System.out.println("+===================================+");
             System.out.println("|    1. Insert Movies               |");
-            System.out.println("|    2. Insert Cinema Halls         |");
-            System.out.println("|    3. Access Ticket Sales Report  |");
-            System.out.println("|    4. Exit                        |");
+            System.out.println("|    2. Access Ticket Sales Report  |");
+            System.out.println("|    3. Exit                        |");
             System.out.println("+===================================+");
 
             System.out.print("Enter your choice: ");
@@ -40,17 +37,14 @@ public class Staff {
                         InsertMovies();
                         break;
                     case 2:
-                        Halls();
-                        break;
-                    case 3:
                         SalesReport();
                         break;
-                    case 4:
+                    case 3:
                         System.out.println("You have exit the staff menu");
                         System.exit(0);
                         break;
                     default:
-                        System.out.println("Invalid choice. Please select only (1-4).");
+                        System.out.println("Invalid choice. Please select only (1-3).");
                         break;
                 }
             } else {
@@ -61,15 +55,23 @@ public class Staff {
     }
 
     public void InsertMovies() {
-        System.out.println("You have Selected 'Insert Movie'");
+     /*
+      *     public Movie(String movieName, int ageRating) 
+      */
 
-    }
+      System.out.println("Enter the movie name: ");
+      String movieName = scanner.nextLine();
 
-    public void Halls() {
-        System.out.println("You have Selected 'Insert Cinema Halls'");
+      System.out.println("Enter the age rating: ");
+      int ageRating = scanner.nextInt();
+
+      Movie movi = new Movie(movieName, ageRating);
+      System.out.println("Enter the cinema hall this movie will be airing: ");
+      int hall = scanner.nextInt();
+      new CinemaHall(hall,movi);
     }
 
     public void SalesReport() {
-        System.out.println("You have Selected 'Access Ticket Sales Report'");
+        ticket.printAllTickets();
     }
 }

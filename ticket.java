@@ -2,14 +2,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class ticket {
     private int ticketID = 0;
     private int seatBookedNum;
     private static double ticketPrice;
-    Customer customer;
     private List<String> seatIDs;
+    private int customer; //CustomerID
     private static List<ticket> tickets = new ArrayList<>();
-    public ticket(List<String> seatIDs, int seatBookedNum, double ticketPrice, Customer customer) {
+
+    public ticket(List<String> seatIDs, int seatBookedNum, double ticketPrice, int customer) {
         this.seatIDs = seatIDs;
         this.ticketID = tickets.size() + 1; // Assign a unique ticket ID
         this.seatBookedNum = seatIDs.size();
@@ -18,6 +20,10 @@ public class ticket {
         tickets.add(this);
     }
 
+    public ticket() {
+        this.ticketID = tickets.size() + 1;
+        tickets.add(this);
+    }
     public List<String> getSeatID() {
         return seatIDs;
     }
@@ -34,17 +40,21 @@ public class ticket {
         return ticketPrice;
     }
 
-    public Customer getCustomer() {
+    public int getCustomer() {
         return customer;
+    }
+
+    public void setCustomer(int customer){
+        this.customer = customer;
     }
        
 
-    public static void cancelTicket() {
+    public void cancelTicket() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter the Ticket ID to cancel: ");
         int ticketID = scanner.nextInt();
         boolean canceled = false;
-        
+        //read through arrayList ticket for ticket object
         for (ticket ticket : tickets) {
             if (ticket.getTicketID() == ticketID) {
                 // Remove the ticket from the list
@@ -70,8 +80,7 @@ public class ticket {
     }
 
     public static void calculateTotalTicketPrice(int seats) {
-        Consumable consume;
-        double foodprice = consume.getFoodTotal();
+        double foodprice = Consumable.getFoodTotal();
         double totalSeatPrice = (seats * Seat.getSeatPrice()) + foodprice;
         ticketPrice = totalSeatPrice;
     }
@@ -81,7 +90,20 @@ public class ticket {
         return "Ticket ID: " + String.format("%04d", ticketID) +
                "\nSeat ID(s): " + seatIDs +
                "\nSeats Booked: " + seatBookedNum +
-               "\nTicket Price: $" + ticketPrice;
+               "\nTicket Price: $" + ticketPrice +
+               "\nCustomer ID: " + String.format("%04d", customer);
     }
 
+    public static void printAllTickets() {
+        String red = "\u001B[31m";
+        String reset = "\u001B[0m";
+        for (ticket ticket : tickets) {
+            System.out.println("Ticket ID: " + String.format("%04d", ticket.getTicketID()));
+            System.out.println("Seat ID(s): " + ticket.getSeatID());
+            System.out.println("Seats Booked: " + ticket.getSeatBookedNum());
+            System.out.println("Ticket Price: $" + ticket.getTicketPrice());
+            System.out.println("Customer ID: " + String.format("%04d", ticket.getCustomer()));
+            System.out.println(red+"*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*"+reset);
+        }
+    }
 }
