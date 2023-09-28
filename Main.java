@@ -6,6 +6,10 @@ public class Main {
     public static void main(String[] args)  {
         // sample data define
 
+        String red = "\u001B[31m";
+        String green = "\u001B[32m";
+        String blue = "\u001B[34m";
+        String reset = "\u001B[0m";
         final String logo = "  _____ _                            \n" +
         " / ____(_)                           \n" +
         "| |     _ _ __   ___ _ __ ___   __ _ \n" +
@@ -20,6 +24,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int menuChoice = 0;
         do {
+                        System.out.println(logo);
+                        System.out.println(blue+"*~~~~~~~~~~~~~~~~~~MAIN*MENU~~~~~~~~~~~~~~~~~~~*"+reset);            
             System.out.println("1) Staff login");
             System.out.println("2) Main Menu");
             System.out.println("Enter Your Choice:");
@@ -27,7 +33,7 @@ public class Main {
                 menuChoice = sc.nextInt();
                 sc.nextLine(); 
                     if (menuChoice == 1) {
-                    do { //Staff login by Ethan, ID and password assumed to be only 1.
+                    do { //Staff login by Ethan, ID and password assumed to be only 1 type.
                     Staff staff = new Staff("admin", "password" );
                     boolean loggedIn = false;
                    
@@ -57,7 +63,6 @@ public class Main {
             }while (userInputIsValid == false);}
                  else if (menuChoice == 2) {
                                         do {
-            System.out.println(logo);
 
         menu3.getHallArr()[0].getSeatArr()[0][0].setSeatAssigned(true);
 
@@ -73,7 +78,7 @@ do {
                 userInputIsValid = false;
                 clearScreen();
             }}while (userInputIsValid == false);
-
+clearScreen();
                     userInputIsValid = true;
 
 
@@ -85,6 +90,7 @@ do {
             //if userInput == 2, obj will be seatID string
             
             if (menu.getUserInput() == '1') {
+                System.out.println(green+"*~~~~~~~~~~~~~~SEAT*AVAILABLE~~~~~~~~~~~~~~~~~~~*"+reset);
                 System.out.println("Which hall would you like to access?");
                 int hall = sc.nextInt();
                 if (menu.validateOption(hall, 1)) {
@@ -123,6 +129,8 @@ do {
                 sc.nextLine(); 
             }
             // redirect to ticket Menu
+            clearScreen();
+            System.out.println(red+"*~~~~~~~~~~~~~~~~TICKET*MENU~~~~~~~~~~~~~~~~~~~~*"+reset);
                     do {
             System.out.println(logo);
             menu2.displayOptions(userInputIsValid);

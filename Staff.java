@@ -8,6 +8,7 @@ public class Staff {
     private String loginID;
     private String password;
       Scanner scanner = new Scanner(System.in);
+
     public Staff(String loginID, String password) {
         this.loginID = loginID;
         this.password = password;
