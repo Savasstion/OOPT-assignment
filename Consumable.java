@@ -61,6 +61,20 @@ public class Consumable {
                 case 5:                    
                     System.out.println("--------------------------------------");
                     System.out.println("Thank you for ordering");
+                    System.out.println("--------------------------------------");
+                    System.out.println("*~~~~~~~~~~~~~~~~TICKET*MENU~~~~~~~~~~~~~~~~~~~~*");
+                    //call ticketMenu
+                    ticketMenu menu2 = new ticketMenu();
+                    boolean userInputIsValid = true;
+                    do {
+            menu2.displayOptions(userInputIsValid);
+            String userInput = scan.nextLine();
+            if (menu2.validateOption(userInput,1)) {
+                menu2.doMenuTask(userInput.charAt(0));
+                userInputIsValid = true;
+            } else {
+                userInputIsValid = false;
+            }}while (userInputIsValid == false);
                     break;
                 
                 default:

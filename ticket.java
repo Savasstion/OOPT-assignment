@@ -97,6 +97,8 @@ public class ticket {
     public static void printAllTickets() {
         String red = "\u001B[31m";
         String reset = "\u001B[0m";
+        System.out.println("Daily Ticket Sales");
+         System.out.println(red+"*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*"+reset);
         for (ticket ticket : tickets) {
             System.out.println("Ticket ID: " + String.format("%04d", ticket.getTicketID()));
             System.out.println("Seat ID(s): " + ticket.getSeatID());

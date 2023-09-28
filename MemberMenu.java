@@ -15,13 +15,13 @@ public class MemberMenu extends Menu {
                 add("Exit");
             }
         });
-        this.memberArr = (new ArrayList<>() {
+        this.memberArr = new ArrayList<Customer>() {
             {
-                add(new Customer(19, false, "Bob", "696969"));
-                add(new Customer(69, false, "Beep", "111"));
-                add(new Customer(1, false, "Grognak, Destroyer of Worlds", "1"));
+                add(new Customer(19, true, "Jackie", "p0p0"));
+                add(new Customer(30, true, "BobJohnson", "pass"));
+                add(new Customer(22, false, "EveBrown", "pass"));
             }
-        });
+        };
 
     }
 
@@ -49,7 +49,6 @@ public class MemberMenu extends Menu {
         // menuInput == 1 for sign up
         // menuInput == 2 for log in
         Scanner s = new Scanner(System.in);
-
          switch (menuInput) {
             case '1':
                 boolean valid = true;
@@ -86,13 +85,14 @@ public class MemberMenu extends Menu {
                 boolean loginSuccessful = false;
 
                 do {
+                    // Trim gets rid of weird spaces if I press space after user/password
                     System.out.println("Enter your username:");
-                    cust.setCustomerName(s.nextLine());
+                    cust.setCustomerName(s.nextLine().trim());
                     System.out.println("Enter your password:");
-                    cust.setPassword(s.nextLine());
+                    cust.setPassword(s.nextLine().trim());
 
                     for (int i = 0; i < getMemberArr().size(); i++) {
-                        if ((memberArr.get(i).getCustomerName().equals(cust.getCustomerName())) && (memberArr.get(i).getPassword().equals(cust.getPassword()))) {
+                        if ((memberArr.get(i).getCustomerName().equalsIgnoreCase(cust.getCustomerName())) && (memberArr.get(i).getPassword().equals(cust.getPassword()))) {
                             loginSuccessful = true;
                             setLoggedInCust(memberArr.get(i));
                             break;

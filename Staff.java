@@ -62,10 +62,10 @@ public class Staff {
 
       System.out.println("Enter the movie name: ");
       String movieName = scanner.nextLine();
-
+      scanner.nextLine();
       System.out.println("Enter the age rating: ");
       int ageRating = scanner.nextInt();
-
+      scanner.nextLine();
       Movie movi = new Movie(movieName, ageRating);
       System.out.println("Enter the cinema hall this movie will be airing: ");
       int hall = scanner.nextInt();
